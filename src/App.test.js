@@ -51,44 +51,38 @@ const clickSubmitBtn = () => {
 };
 
 //describe block
-describe(
-  ("initial render of inputs check",
-  () => {
-    //test block
-    test("expect inputs to be empty on initial render", () => {
-      //rendering component to test
-      //find specific element
-      //assertion, assert what is expected to happen
-      expect(screen.getByRole("textbox").value).toBe("");
-      expect(screen.getByLabelText("Password").value).toBe("");
-      expect(screen.getByLabelText(/confirm password/i).value).toBe("");
-    });
-  })
-);
+describe("initial render of inputs check", () => {
+  //test block
+  test("expect inputs to be empty on initial render", () => {
+    //rendering component to test
+    //find specific element
+    //assertion, assert what is expected to happen
+    expect(screen.getByRole("textbox").value).toBe("");
+    expect(screen.getByLabelText("Password").value).toBe("");
+    expect(screen.getByLabelText(/confirm password/i).value).toBe("");
+  });
+});
 
-describe(
-  ("tests typing into form components",
-  () => {
-    test("should be able to type into email input", () => {
-      const { emailInputElement } = typeIntoForm({
-        email: "testemail@email.com",
-      });
-      expect(emailInputElement.value).toBe("testemail@email.com");
+describe("tests typing into form components", () => {
+  test("should be able to type into email input", () => {
+    const { emailInputElement } = typeIntoForm({
+      email: "testemail@email.com",
     });
+    expect(emailInputElement.value).toBe("testemail@email.com");
+  });
 
-    test("should be able to type into password input", () => {
-      const { passwordInputElement } = typeIntoForm({ password: "abc123" });
-      expect(passwordInputElement.value).toBe("abc123");
-    });
+  test("should be able to type into password input", () => {
+    const { passwordInputElement } = typeIntoForm({ password: "abc123" });
+    expect(passwordInputElement.value).toBe("abc123");
+  });
 
-    test("should be able to type into confirmPassword input", () => {
-      const { confirmPasswordInputElement } = typeIntoForm({
-        confirmPassword: "abc123",
-      });
-      expect(confirmPasswordInputElement.value).toBe("abc123");
+  test("should be able to type into confirmPassword input", () => {
+    const { confirmPasswordInputElement } = typeIntoForm({
+      confirmPassword: "abc123",
     });
-  })
-);
+    expect(confirmPasswordInputElement.value).toBe("abc123");
+  });
+});
 
 describe("error handling tests", () => {
   test("should show email error message on invalid email", () => {
