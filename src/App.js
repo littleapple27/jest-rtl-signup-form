@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+/* eslint-disable no-unused-expressions */
 import "./App.css";
 import { useState } from "react";
 import validator from "validator";
@@ -20,9 +20,15 @@ function App() {
   };
 
   const handleClick = (e) => {
-    e.preventDefault;
+    console.log(e);
+    e.preventDefault();
+    e.stopPropagation();
     if (!validator.isEmail(signupInput.email)) {
       return setError("The email address is invalid");
+    } else if (signupInput.password.length < 5) {
+      return setError("Password should contain 5 or more characters.");
+    } else if (signupInput.password !== signupInput.confirmPassword) {
+      return setError("The passwords do not match.");
     }
   };
   return (
